@@ -17,7 +17,7 @@ if (!(test-path -path $DestinationDir)) {
 	write-Host -backgroundcolor Red "Destination path incorrect!"
 	exit
 }
-# Pull a list of all folders in the source directory and resurce through them
+# Pull a list of all folders in the source directory and recurse through them
 $FolderList = get-childitem -path $SourceDir -recurse | where-object {$_.Psiscontainer}
 foreach ($Folder in $FolderList) {
 	# Set the full source and destination path
