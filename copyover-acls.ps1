@@ -35,6 +35,8 @@ foreach ($Folder in $FolderList) {
 		} catch {
 			write-Host -backgroundcolor Red "Couldn't read ACL on source."
 			write-Host -backgroundcolor Red $_.Exception.Message
+			# skip to next item in loop so we don't try to write corrupted data to destination ACL
+			continue
 		}
 		try {
 			set-Acl -path $FolderDestPath -AclObject $ACL -ErrorAction stop
